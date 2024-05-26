@@ -9,6 +9,7 @@ const logo = document.getElementById("logo");
 const mainContainer = document.querySelector(".container");
 const footer = document.querySelector("footer");
 const loader = document.querySelector(".loader");
+const searchButton = document.querySelector("input[type='submit']");
 const date = new Date();
 
 // for the page on load(use the promise syntax)
@@ -52,3 +53,60 @@ logo.addEventListener("click", defaultWeather);
 window.onload = defaultWeather();
 
 //Async Await syntax
+async function getWeather() {
+  const input = document
+    .querySelector("input[type='text']")
+    .value.toLowerCase();
+  if (input === "") {
+    alert("Please enter a city");
+    return;
+  }
+  const URL = `https://api.weatherapi.com/v1/forecast.json?key=2c2c2077ae0a4a33ac1142821242205&q=${input}?days=3`;
+
+  // Loader
+  //   mainContainer.style.display = "none";
+  //   footer.style.display = "none";
+  try {
+    mainContainer.style.display = "none";
+    footer.style.display = "none";
+    const fetchData = await fetch(URL, { mode: "cors" });
+    const response = fetchData.json();
+
+    // loader.style.display = "none";
+    // mainContainer.style.display = "block";
+    // footer.style.display = "block";
+
+    response.then((data) => {
+      // remove Loader
+      loader.style.display = "none";
+      mainContainer.style.display = "block";
+      footer.style.display = "block";
+
+      cityName.textContent = `${data.location.name}, ${data.location.country}`;
+      dateInfo.textContent = date.toDateString();
+      conditionText.textContent = data.current.condition.text;
+      conditionIcon.src = data.current.condition.icon;
+      temperature.textContent = data.forecast.forecastday[0].day.avgtemp_c;
+      data.forecast.forecastday[0].hour.forEach((object) => {
+        hourForecast.innerHTML += `
+            <div class="timeTemperature">
+            <div class="timeTemp">${object.time.split(" ")[1]}</div>
+            <div class="tempTime">${
+              object.temp_c
+            }<span><sup>0</sup>C</span></div>
+            </div>
+            `;
+      });
+    });
+  } catch (data) {
+    throw new Error(data, "Network Failure");
+  }
+}
+
+searchButton.addEventListener("click", (e) => {
+  getWeather();
+  const searchBox = document.getElementById("search-box");
+  searchBox.value = "";
+  hourForecast.innerHTML = "";
+  e.preventDefault();
+});
