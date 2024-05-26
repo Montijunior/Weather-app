@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    width: 100%;
+    /* height: 100px; */
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header .logo img{
+    /* width: 100%; */
+    height: 60px;
+    cursor: pointer;
+}
+
+form {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+}
+form input[type='text'] {
+    width: 70%;
+    font-size: 20px;
+    border-radius: 25px 0 0 25px;
+    border: none;
+    padding: 5px 15px;
+    outline-color: none;
+    outline: none;
+    color: #333;
+    cursor: pointer;
+}
+form input[type='submit'] {
+    font-size: 20px;
+    border-radius:0 25px 25px 0 ;
+    border: none;
+    outline: none;
+    background-color: rgb(48, 100, 150);
+    margin-left: -5px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.toggleButton {
+    justify-self: end;
+}
+
+.toggle {
+    padding: 3px 10px;
+    font-size: 1.65rem;
+    font-weight: bold;
+    background-color: rgb(48, 100, 150);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.sup {
+    font-size: 1rem;
+    color: white;
+    margin-right: 3px;
+}
+/* header styles above */
+
+
+/* container style */
+.container {
+    max-width: 1000px;
+    padding: 0 5%;
+    margin: 0 auto;
+}
+
+.city-info .city-name {
+    text-align: center;
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.date-info {
+    text-align: center;
+    margin: -15px 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.current {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.current .condition-icon {
+    height: 100px;
+    width: 100px;
+}
+
+.current .condition-text {
+    font-size: 1.8rem;
+}
+
+.temperature-data {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperature-data .temperature {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+sup.deg {
+    font-size: 2rem;
+}
+
+.hour-forecast {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 15px;
+    overflow-x: scroll;
+    color: white;
+    background-color: rgb(48, 100, 150);
+    margin: 50px 0px;
+}
+
+.title-hour {
+    text-align: center;
+    margin: 20px;
+    font-size: 1.8rem;
+}
+
+.timeTemperature {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    /* border-left: 1px solid gray; */
+}
+.timeTemp {
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 5px 0px;
+}
+.tempTime {
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+.tempTime span sup {
+    font-size: .7rem;
+    margin-left: 3px;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    background-color:#f0f0f0;
+}
+.footer p {
+    font-size: 1.5rem;
+}
+.footer p a {
+    text-decoration: none;
+}
+
+/* 
+.loader {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}} */ 
