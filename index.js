@@ -62,25 +62,12 @@ async function getWeather() {
     return;
   }
   const URL = `https://api.weatherapi.com/v1/forecast.json?key=2c2c2077ae0a4a33ac1142821242205&q=${input}?days=3`;
-
-  // Loader
-  //   mainContainer.style.display = "none";
-  //   footer.style.display = "none";
   try {
-    mainContainer.style.display = "none";
-    footer.style.display = "none";
     const fetchData = await fetch(URL, { mode: "cors" });
     const response = fetchData.json();
 
-    // loader.style.display = "none";
-    // mainContainer.style.display = "block";
-    // footer.style.display = "block";
-
     response.then((data) => {
       // remove Loader
-      loader.style.display = "none";
-      mainContainer.style.display = "block";
-      footer.style.display = "block";
 
       cityName.textContent = `${data.location.name}, ${data.location.country}`;
       dateInfo.textContent = date.toDateString();
@@ -110,3 +97,5 @@ searchButton.addEventListener("click", (e) => {
   hourForecast.innerHTML = "";
   e.preventDefault();
 });
+
+// loader not working in async await code
