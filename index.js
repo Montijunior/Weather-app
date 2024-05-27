@@ -18,6 +18,7 @@ function onError() {
 }
 
 function defaultWeather() {
+  hourForecast.innerHTML = "";
   mainContainer.style.display = "none";
   footer.style.display = "none";
 
